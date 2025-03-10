@@ -60,10 +60,9 @@ last([_ | T], X):-
 append([], [], []).
 append([], [H2 | T2], [H2 | T2]).
 append([H1 | T1], [], [H1 | T1]).
-append([H1 | T1], [H2 | T2], L):-
-  append(T1, [H2 | T2], L2),
-  L is [H1 | L2].
-% POR TERMINAR
+append([H1 | T1], L, L2):-
+  append(T1, L, L3),
+  L2 is [H1 | L3].
 
 % Alínea F
 replace(_Old, _New, [], []).
