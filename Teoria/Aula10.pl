@@ -41,3 +41,24 @@ is_sorted1([_]):-
 is_sorted1([X1, X2 | T]):-
   X1 =< X2,
   is_sorted1([X2 | T]).
+
+% Exercicio 6
+insert_in_sorted_list(X, [], [X]).
+insert_in_sorted_list(X, [H | T], [X, H | T]):-
+  X < H.
+insert_in_sorted_list(X, [H | T], [H | L]):-
+  X >= H,
+  insert_in_sorted_list(X, T, L).
+
+% Exercicio 7
+sorti([], []).
+sorti([X], [X]).
+% sorti([X, H | L], [H | L2]):-
+%   X > H,
+%   sorti([X | L], L2).
+% sorti([X, H | L], [X | L2]):-
+%   X =< H,
+%   sorti([H | L], L2).
+sorti([X | T], L):-
+  sorti(T, L2),
+  insert_in_sorted_list(X, L2, L).
